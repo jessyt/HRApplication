@@ -96,15 +96,19 @@ class App extends React.Component {
           employee={this.state.selectedEmployee}
           />
         </div>
-        <Box class="w-2/3 px-20">
+        <Box class="w-3/5 max-w-full px-20">
             <List class="pl-30">
               {this.state.employees.map((values, index) => {
                 console.log(values)
                 return (
-                  <ListItem class=" min-w-full w-1/2 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" key={values._id}>
+                  <ListItem class="min-w-full focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" key={values._id}>
                     <div>
                       <ListItemButton onClick={() => { this.selectEmployee(values._id) }}>
-                        <ListItemText>{values.lastName}, {values.firstName}</ListItemText>
+                        <ListItemText class="text-lg">
+                          <div class="text-2xl">
+                          {values.lastName}, {values.firstName}
+                            </div>
+                      </ListItemText>
                       </ListItemButton>
                       {this.state.selectedEmployeeId === values._id &&
                         <DialogOpenBox
