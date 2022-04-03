@@ -5,6 +5,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
+import axios from 'axios';
 
 class NewEmployeeModal extends React.Component {
   constructor(props) {
@@ -12,35 +13,82 @@ class NewEmployeeModal extends React.Component {
     this.state = {
       firstName: null,
       lastName: null,
-      salary: null,
+      age: null,
+      title:null,
+      salary:null
     }
     this.handleClose = this.handleClose.bind(this);
-    this.handleNewEmployeeSubmit = this.handleNewEmployeeSubmit.bind(this);
-    this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
-    this.handleLastNameChange = this.handleLastNameChange.bind(this);
 }
 
   handleClose (){
+    this.setState({
+      firstName: null,
+      lastName: null,
+      age: null,
+      title: null,
+      salary: null,
+    })
       this.props.handleModalClose()
   }
 
-  handleNewEmployeeSubmit(){
-      alert('hellzeya')
-      this.props.handleModalClose()
+  handleNewEmployeeSubmit=()=>{
+      if(this.state.age !== null &&
+        this.state.firstName !== null &&
+        this.state.lastName !== null &&
+        this.state.title !== null &&
+        this.state.salary !== null)
+        {
+          axios.post('/add_employee', {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            age: this.state.age,
+            title: this.state.title,
+            salary: this.state.salary
+          })
+          .then(function (response) {
+            console.log(response);
+            this.handleClose()
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        }
+        else
+        {
+          alert('Please fill out all values before pressing submit')
+        }
+      
   }
 
-  handleFirstNameChange(event){
+  handleFirstNameChange=(event)=>{
       this.setState({
           firstName: event.target.value,
       })
   }
 
-  handleLastNameChange(event){
+  handleLastNameChange=(event)=>{
     this.setState({
         lastName: event.target.value,
     })
 }
 
+  handleAgeChange=(event)=>{
+    this.setState({
+        age: event.target.value,
+    })
+  }
+
+  handleTitleChange=(event)=>{
+    this.setState({
+        title: event.target.value,
+    })
+  }
+
+  handleSalaryChange=(event)=>{
+    this.setState({
+        salary: event.target.value,
+    })
+  }
   render() {
     return (
         <div>
@@ -62,6 +110,24 @@ class NewEmployeeModal extends React.Component {
                 label="LastName"
                 value={this.state.lastName}
                 onChange={this.handleLastNameChange}
+                />
+                <TextField
+                id="outlined-text-field"
+                label="Age"
+                value={this.state.age}
+                onChange={this.handleAgeChange}
+                />
+                <TextField
+                id="outlined-text-field"
+                label="Position"
+                value={this.state.title}
+                onChange={this.handleTitleChange}
+                />
+                <TextField
+                id="outlined-text-field"
+                label="Salary"
+                value={this.state.salary}
+                onChange={this.handleSalaryChange}
                 />
             </DialogContent>
             <DialogActions>

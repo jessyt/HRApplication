@@ -81,9 +81,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div style={{ padding: '50px' }}>
-        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <Button onClick={this.clickMe}>Create New Employee</Button>
+      <div class="flex flex-col ">
+        <div class="flex justify-start px-12 py-12">
+          <Button class="h-20 bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg"
+            onClick={this.clickMe}>Create New Employee</Button>
           <NewEmployeeModal
           handleModalClose={this.handleCreateNewEmployeeModalClose}
           isOpen={this.state.isCreateNewEmployeeModalOpen}
@@ -95,7 +96,7 @@ class App extends React.Component {
           employee={this.state.selectedEmployee}
           />
         </div>
-        <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+        <Box class="w-5/6">
           <nav aria-label="main mailbox folders">
             <List>
               {this.state.employees.map((values, index) => {
