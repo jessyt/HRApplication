@@ -28,7 +28,7 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('http://localhost:3001/employees')
       .then(result => {
-        console.log(result)
+        console.log(result.data)
         this.setState({
           employees: result.data,
         })
@@ -74,9 +74,9 @@ class App extends React.Component {
     let tempId = this.state.selectedEmployeeId === id ? null : id
     this.setState({
       selectedEmployeeId: tempId,
-      selectedEmployee : this.state.employees.find(employee => employee.id === id)
+      selectedEmployee : this.state.employees.find(employee => employee._id === id)
     })
-    console.log(this.state.employees.find(employee => employee.id === id))
+    console.log(this.state.employees.find(employee => employee._id === id))
   }
 
   render() {
@@ -99,13 +99,14 @@ class App extends React.Component {
           <nav aria-label="main mailbox folders">
             <List>
               {this.state.employees.map((values, index) => {
+                console.log(values)
                 return (
-                  <ListItem disablePadding key={values.id}>
+                  <ListItem disablePadding key={values._id}>
                     <div>
-                      <ListItemButton onClick={() => { this.selectEmployee(values.id) }}>
-                        <ListItemText primary={values.id} />
+                      <ListItemButton onClick={() => { this.selectEmployee(values._id) }}>
+                        <ListItemText primary={values._id} />
                       </ListItemButton>
-                      {this.state.selectedEmployeeId === values.id &&
+                      {this.state.selectedEmployeeId === values._id &&
                         <DialogOpenBox
                         employee={values}
                         handleViewDeductionsClick={this.handleViewDeductionsClick}/>
