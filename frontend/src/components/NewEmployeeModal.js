@@ -18,6 +18,7 @@ class NewEmployeeModal extends React.Component {
       salary:null
     }
     this.handleClose = this.handleClose.bind(this);
+    this.handleNewEmployeeSubmit = this.handleNewEmployeeSubmit.bind(this);
 }
 
   handleClose (){
@@ -31,13 +32,15 @@ class NewEmployeeModal extends React.Component {
       this.props.handleModalClose()
   }
 
-  handleNewEmployeeSubmit=()=>{
+  //Why does this still continue to leave stuff in it? trying to find a better way
+  handleNewEmployeeSubmit(){
       if(this.state.age !== null &&
         this.state.firstName !== null &&
         this.state.lastName !== null &&
         this.state.title !== null &&
         this.state.salary !== null)
         {
+          this.props.handleModalClose()
           axios.post('/add_employee', {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
@@ -46,8 +49,13 @@ class NewEmployeeModal extends React.Component {
             salary: this.state.salary
           })
           .then(function (response) {
-            console.log(response);
-            this.handleClose()
+            this.setState({
+              firstName: null,
+              lastName: null,
+              age: null,
+              title: null,
+              salary: null,
+            });
           })
           .catch(function (error) {
             console.log(error);
