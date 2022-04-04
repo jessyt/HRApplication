@@ -106,31 +106,42 @@ class NewEmployeeModal extends React.Component {
             aria-describedby="alert-dialog-slide-description"
           >
             <DialogTitle>{"Enter A New Employee"}</DialogTitle>
-            <DialogContent>
-                <TextField
-                id="outlined-text-field"
-                label="FirstName"
-                value={this.state.firstName}
-                onChange={this.handleFirstNameChange}
-                />
+            <DialogContent class="px-4 py-4 flex flex-col justify-center">
+              <div class="flex flex-row py-2">
+                <div class="pr-2">
+                  <TextField
+                  id="outlined-text-field"
+                  label="FirstName"
+                  value={this.state.firstName}
+                  onChange={this.handleFirstNameChange}
+                  />
+                </div>
+
                 <TextField
                 id="outlined-text-field"
                 label="LastName"
                 value={this.state.lastName}
                 onChange={this.handleLastNameChange}
                 />
-                <TextField
-                id="outlined-text-field"
-                label="Age"
-                value={this.state.age}
-                onChange={this.handleAgeChange}
-                />
-                <TextField
-                id="outlined-text-field"
-                label="Position"
-                value={this.state.title}
-                onChange={this.handleTitleChange}
-                />
+              </div>
+              <div class="flex flex-row py-2">
+                <div class="pr-2">
+                  <TextField
+                    id="outlined-text-field"
+                    label="Age"
+                    value={this.state.age}
+                    onChange={this.handleAgeChange}
+                    />
+                </div>
+                  <TextField
+                  id="outlined-text-field"
+                  label="Position"
+                  value={this.state.title}
+                  onChange={this.handleTitleChange}
+                  />
+              </div>
+
+
                 <TextField
                 id="outlined-text-field"
                 label="Salary"
