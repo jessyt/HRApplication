@@ -11,7 +11,7 @@ To run the application:
 
 
 # HRApplication postman collection
-I just included this so that you can test out the 4 endpoints that are in the program. To test these, import the collection to postman and run at the root directory of this folder "npm start"
+I just included this so that you can test out the 4 endpoints that are in the program. To test these, import the collection to postman and run at the root directory of this folder "npm start". There are a small bit of functional tests on the collections.
 
 ## Python Test Data
 I would suggest running this before running the app so it has some data in the collection
