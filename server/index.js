@@ -36,47 +36,6 @@ db.once("open", function () {
 });
 
 
-// app.get("/employees", async(req,res)=>{
-//   res.json([
-//     {
-//       id : 1,
-//       salary: 100000,
-//       job: "software dev"
-//     },
-//     {
-//       id : 2,
-//       salary: 120000,
-//       job: "software lead"
-//     },
-//     {
-//       id : 3,
-//       salary: 90000,
-//       job: "junior dev"
-//     }
-//   ])
-// })
-
-app.get("/deductions", (req,res)=>{
-  res.json([
-    {
-      id : 1,
-      type: "Pre-tax Withdraw",
-      amount : 2000
-    },
-    {
-      id : 2,
-      type: "Health Insurance",
-      amount : 8000
-    },
-    {
-      id : 3,
-      type: "Stock Options",
-      amount : 3000
-    }
-  ])
-})
-
-
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
 });

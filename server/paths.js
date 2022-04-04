@@ -1,5 +1,6 @@
 const express = require("express");
-const employeeModel = require("./models");
+const employeeModel = require("./Models/Employee");
+const deductionModel = require("./Models/Deduction");
 var bodyParser = require('body-parser')
 const app = express();
 
@@ -23,5 +24,25 @@ app.get("/employees", async (request, response) => {
       response.status(500).send(error);
     }
   });
+
+  app.get("/deductions", async (request, response) => {
+    const deductions = await deductionModel.find({});
+    let filteredDeductions = deductions.filter(x=> x.employeeId === request.query.employeeId)
+    try {
+      response.send(filteredDeductions);
+    } catch (error) {
+      response.status(500).send(error);
+    }
+  });
+
+  app.post("/add_deduction", async (request, response) => {
+    const deduction = new deductionModel(request.body);
+    try {
+      await deduction.save();
+      response.send(deduction);
+    } catch (error) {
+      response.status(500).send(error);
+    }
+});
 
  module.exports = app;
