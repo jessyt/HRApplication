@@ -62,9 +62,7 @@ class EmployeeDeductionModal extends React.Component {
                   divider={<Divider orientation="horizontal" flexItem />}
                   spacing={2}
                 >
-                    <Stack direction='row' spacing={2}>
-                      <p>Total Takehome:</p>
-                    </Stack>
+                  <div></div>
                     <p>Total: ${takeHomeSalary}</p>
                 </Stack>
             </DialogContent>
