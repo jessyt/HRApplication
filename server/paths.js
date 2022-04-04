@@ -27,7 +27,12 @@ app.get("/employees", async (request, response) => {
 
   app.get("/deductions", async (request, response) => {
     const deductions = await deductionModel.find({});
-    let filteredDeductions = deductions.filter(x=> x.employeeId === request.query.employeeId)
+    let filteredDeductions;
+    if(request.query.employeeId !== null)
+    {
+        filteredDeductions= deductions.filter(x=> x.employeeId === request.query.employeeId)
+    }
+     
     try {
       response.send(filteredDeductions);
     } catch (error) {

@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "d730cdba-e367-4a4b-9fa7-c7597ced2daf",
+		"name": "HRApplication ",
+		"description": "Demonstrates backend API points for HR Application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Employees",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Bob\",\r\n    \"lastName\" : \"The Builder\",\r\n    \"age\" : \"42\",\r\n    \"title\" : \"Builder\",\r\n    \"salary\": \"40000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/add_employee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"add_employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Deductions Based on Employee Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/deductions?employeeId=624a526f208341e4fa1a1812",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"deductions"
+					],
+					"query": [
+						{
+							"key": "employeeId",
+							"value": "624a526f208341e4fa1a1812"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Deduction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"employeeId\": \"624a526f208341e4fa1a1812\",\r\n    \"type\" : \"Pre-Tax\",\r\n    \"amount\" : \"5000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/add_deduction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"add_deduction"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
