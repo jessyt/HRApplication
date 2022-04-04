@@ -40,7 +40,6 @@ class App extends React.Component {
   handleViewDeductionsClick=(id)=>{
       axios.get('http://localhost:3001/deductions?employeeId='+id)
         .then(result => {
-          console.log(result.data)
           this.setState({
             selectedEmployeeDeductions: result.data,
             isViewEmployeeDeductionsModalOpen: true
@@ -75,7 +74,6 @@ class App extends React.Component {
       selectedEmployeeId: tempId,
       selectedEmployee : this.state.employees.find(employee => employee._id === id)
     })
-    console.log(this.state.employees.find(employee => employee._id === id))
   }
 
   render() {
