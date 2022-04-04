@@ -101,11 +101,11 @@ class App extends React.Component {
               {this.state.employees.map((values, index) => {
                 console.log(values)
                 return (
-                  <ListItem class="min-w-full focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" key={values._id}>
-                    <div>
+                  <ListItem class="min-w-full bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" key={values._id}>
+                    <div class="flex flex-col">
                       <ListItemButton onClick={() => { this.selectEmployee(values._id) }}>
                         <ListItemText class="text-lg">
-                          <div class="text-2xl">
+                          <div class="text-2xl flex flex-start">
                           {values.lastName}, {values.firstName}
                             </div>
                       </ListItemText>
