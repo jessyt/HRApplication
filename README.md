@@ -1,5 +1,7 @@
 # HRApplication
 
+Here is the link to the application! I have noticed that it doesn't grab the collection and throws a red message in logs because of in-activity? https://www.reddit.com/r/Heroku/comments/oqlsfp/getting_stopping_all_processes_with_sigterm/ was a followup but hopefully it doesn't happen!
+
 https://jessy-hr-application.herokuapp.com/
 
 To run the application:
