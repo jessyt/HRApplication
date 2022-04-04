@@ -39,7 +39,7 @@ class EmployeeDeductionModal extends React.Component {
           >
             <DialogTitle>{"Deductions Calculator"}</DialogTitle>
             <DialogContent>
-              {
+              {this.props.deductions ?
                 <Stack spacing={2}>
                   <Stack direction='row' spacing={2}>
                   <div>Total Salary :</div>
@@ -55,7 +55,8 @@ class EmployeeDeductionModal extends React.Component {
                     )
                   })
                   }
-            </Stack>
+            </Stack>:
+            <div>No Deductions on this account</div>
             }
               <Stack
                   divider={<Divider orientation="horizontal" flexItem />}
@@ -64,7 +65,7 @@ class EmployeeDeductionModal extends React.Component {
                     <Stack direction='row' spacing={2}>
                       <p>Total Takehome:</p>
                     </Stack>
-                    <p>${takeHomeSalary}</p>
+                    <p>Total: ${takeHomeSalary}</p>
                 </Stack>
             </DialogContent>
             <DialogActions>

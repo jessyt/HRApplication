@@ -21,14 +21,13 @@ class App extends React.Component {
       selectedEmployeeDeductions: [],
       isViewEmployeeDeductionsModalOpen: false
     }
-    this.clickMe = this.clickMe.bind(this);
+    this.createNewEmployee = this.createNewEmployee.bind(this);
     this.selectEmployee = this.selectEmployee.bind(this);
   }
 
   componentDidMount() {
     axios.get('http://localhost:3001/employees')
       .then(result => {
-        console.log(result.data)
         this.setState({
           employees: result.data,
         })
@@ -39,9 +38,9 @@ class App extends React.Component {
   }
 
   handleViewDeductionsClick=(id)=>{
-      axios.get('http://localhost:3001/deductions')
+      axios.get('http://localhost:3001/deductions?employeeId='+id)
         .then(result => {
-          console.log(result)
+          console.log(result.data)
           this.setState({
             selectedEmployeeDeductions: result.data,
             isViewEmployeeDeductionsModalOpen: true
@@ -64,7 +63,7 @@ class App extends React.Component {
     })
   }
 
-  clickMe() {
+  createNewEmployee() {
     this.setState({
       isCreateNewEmployeeModalOpen: true,
     })
@@ -84,7 +83,7 @@ class App extends React.Component {
       <div class="flex flex-col ">
         <div class="flex justify-start px-12 py-12">
           <Button class="h-20 bg-purple-500 hover:bg-purple-700 text-white text-lg font-bold py-2 px-10 rounded-lg"
-            onClick={this.clickMe}>Create New Employee</Button>
+            onClick={this.createNewEmployee}>Create New Employee</Button>
           <NewEmployeeModal
           handleModalClose={this.handleCreateNewEmployeeModalClose}
           isOpen={this.state.isCreateNewEmployeeModalOpen}
@@ -99,7 +98,6 @@ class App extends React.Component {
         <Box class="w-3/5 max-w-full px-20">
             <List class="pl-30">
               {this.state.employees.map((values, index) => {
-                console.log(values)
                 return (
                   <ListItem class="min-w-full bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" key={values._id}>
                     <div class="flex flex-col">
