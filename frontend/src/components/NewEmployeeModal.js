@@ -32,7 +32,8 @@ class NewEmployeeModal extends React.Component {
       this.props.handleModalClose()
   }
 
-  //Why does this still continue to leave stuff in it? trying to find a better way
+  //Funky error where I am trying to set the state in two places - I don't remember 
+  // how I have gotten around this before? But will revist
   handleNewEmployeeSubmit(){
       if(this.state.age !== null &&
         this.state.firstName !== null &&
